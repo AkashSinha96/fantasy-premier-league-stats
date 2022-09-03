@@ -1,9 +1,14 @@
 import "./App.css";
+import Body from "./Components/UI/Body/Body";
+import Footer from "./Components/UI/Footer/Footer";
+import Header from "./Components/UI/Header/Header";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className=" bg-teal-800 ">
+      <Header/>
+      <Body/>
+      <Footer/>
     </div>
   );
 }
