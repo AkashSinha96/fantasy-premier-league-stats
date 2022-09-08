@@ -5,9 +5,9 @@ import Header from "./Components/UI/Header/Header";
 
 function App() {
   return (
-    <div className=" bg-teal-800 ">
+    <div className="">
       <Header/>
-      <Body/>
+      <Body />
       <Footer/>
     </div>
   );
