@@ -6,7 +6,8 @@ Simple ReactJs App which lets you view your basic Fantasy Premier League Statist
 
 ## How to use
 
-Login to your account on #[Fantasy Premier League](https://fantasy.premierleague.com/)  
+Login to your account on [Fantasy Premier League](https://fantasy.premierleague.com/)  
+Navigate to Points section. In the url copy your TeamId. For eg: In the url (https://fantasy.premierleague.com/entry/5284163/event/6), 5284163 is the TeamId.
 
 ### `npm start`
 
