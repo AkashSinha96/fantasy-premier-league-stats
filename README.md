@@ -20,7 +20,7 @@ $ npm install
 $ npm start
 ```
 
-### Technology Used
+## Technology Used
  1. ReactJS
  2. Tailwind CSS components provided by Flowbite.
  3. Deployed proxy server to handle CORS request. [Repo Link](https://github.com/AkashSinha96/fantasy-premier-league-stats-api-handler) 
