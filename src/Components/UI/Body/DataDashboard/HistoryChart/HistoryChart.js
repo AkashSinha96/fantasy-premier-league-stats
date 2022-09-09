@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 const HistoryChart = (props) => {
+  const [playerId, setPlayerId] = useState(props.id);
   const [currentFplData, setCurrentFplData] = useState();
   const [pastFplData, setPastFplData] = useState();
   const [chartVisible, setChartVisible] = useState(false);
@@ -11,7 +12,7 @@ const HistoryChart = (props) => {
         type: "area",
         fontFamily: "Inter, sans-serif",
         foreColor: "#6B7280",
-        height : '50%',
+        height: "50%",
         toolbar: {
           show: false,
         },
@@ -28,6 +29,9 @@ const HistoryChart = (props) => {
             fontWeight: 500,
           },
         },
+        title: {
+          text: "",
+        },
       },
       yaxis: {
         labels: {
@@ -36,6 +40,9 @@ const HistoryChart = (props) => {
             fontSize: "14px",
             fontWeight: 500,
           },
+        },
+        title: {
+          text: "",
         },
       },
       stroke: {
@@ -54,8 +61,8 @@ const HistoryChart = (props) => {
       },
     ],
   });
-  if (props.id !== 0 && props.id !== undefined) {
-    const baseURL = "http://localhost:3001/?eventType=";
+  function LoadPlayerData() {
+    const baseURL = "https://fpl-api-handler.herokuapp.com/?eventType=";
     const requestURL = baseURL + "entry/" + props.id + "/history/";
     fetch(requestURL)
       .then((response) => {
@@ -70,19 +77,29 @@ const HistoryChart = (props) => {
         setPastFplData(result.past);
       });
   }
+  useEffect(() => {
+    if (playerId !== undefined && playerId !== 0) {
+      LoadPlayerData();
+    }
+  }, [playerId]);
   useEffect(
     () => {
       if (currentFplData !== undefined && pastFplData !== undefined) {
         let [xAxisData] = [];
         let [yAxisData] = [];
+        let xAxisLabel = "";
+        let yAxisLabel = "";
         if (currentFplData.length !== 0 && pastFplData.length !== 0) {
-          if(props.pastData){
-            xAxisData =pastFplData.map((x) => x.season_name);
-            yAxisData= pastFplData.map((x) => x.rank)
-          }
-          else{
-            xAxisData =currentFplData.map((x) => x.event);
-            yAxisData= currentFplData.map((x) => x.overall_rank)
+          if (props.pastData) {
+            xAxisData = pastFplData.map((x) => x.season_name);
+            yAxisData = pastFplData.map((x) => x.rank);
+            xAxisLabel = "Season";
+            yAxisLabel = "Rank";
+          } else {
+            xAxisData = currentFplData.map((x) => x.event);
+            yAxisData = currentFplData.map((x) => x.overall_rank);
+            xAxisLabel = "Gameweek";
+            yAxisLabel = "Rank";
           }
           setChartVisible(true);
           setState({
@@ -92,19 +109,22 @@ const HistoryChart = (props) => {
                 type: "area",
                 fontFamily: "Inter, sans-serif",
                 foreColor: "#6B7280",
-                height : '50%',
+                height: "50%",
                 toolbar: {
                   show: false,
                 },
               },
               xaxis: {
-                categories: xAxisData  ,
+                categories: xAxisData,
                 labels: {
                   style: {
                     colors: ["#6B7280"],
                     fontSize: "14px",
                     fontWeight: 500,
                   },
+                },
+                title: {
+                  text: xAxisLabel,
                 },
               },
               yaxis: {
@@ -114,6 +134,9 @@ const HistoryChart = (props) => {
                     fontSize: "14px",
                     fontWeight: 500,
                   },
+                },
+                title: {
+                  text: yAxisLabel,
                 },
               },
               stroke: {
@@ -143,7 +166,9 @@ const HistoryChart = (props) => {
   );
   return (
     <div>
-      {chartVisible && <Chart options={state.options} series={state.series} height='300' />}
+      {chartVisible && (
+        <Chart options={state.options} series={state.series} height="300" />
+      )}
       {!chartVisible && (
         <div role="status">
           <svg

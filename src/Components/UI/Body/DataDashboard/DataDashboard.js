@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import HistoryChart from "./HistoryChart/HistoryChart";
-import InformationTable from "./Information Table/InformationTable";
+import DynamicTable from "./Table/DynamicTable";
+import InformationTable from "./Table/InformationTable";
 
 const DataDashboard = (props) => {
   const basicFplData = props.data;
   const [chartVisible, setChartVisible] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
   const [userName, setUserName] = useState("");
-  
-  
+  const [playerLeagueInformation, setPlayerLeagueInformation] = useState(props.data.leagues.classic)
   useEffect(() => {
     if (basicFplData.id !== undefined && basicFplData.id !== 0) {
       setChartVisible(true);
@@ -45,22 +45,22 @@ const DataDashboard = (props) => {
           </div>
         </div>
       </div>
-      <div className="mt-4 w-full grid grid-cols-1 gap-4">
+      <div className="mt-4 w-full grid grid-cols-1 gap-4 h-1/2">
         <div className=" bg-white dark:bg-gray-800 shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
           <div className="flex items-center justify-between mb-4">
             <div className="flex-shrink-0">
               <span className="text-2xl sm:text-3xl leading-none font-bold text-black dark:text-white">
-                {userName}
+                League Standings
               </span>
             </div>
           </div>
-         { tableVisible && <InformationTable data={basicFplData}/>}
+         { tableVisible && <DynamicTable leagueData={playerLeagueInformation}/>}
         </div>
         <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-4 sm:p-6 xl:p-8 items-center">
           <div className="flex items-center justify-between mb-4">
             <div className="flex-shrink-0">
               <span className="text-2xl sm:text-3xl leading-none font-bold text-black dark:text-white">
-                Season History
+                Gameweek History
               </span>
             </div>
           </div>

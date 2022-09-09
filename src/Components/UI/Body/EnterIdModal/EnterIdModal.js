@@ -26,7 +26,7 @@ const EnterIdModal = (props) => {
   const inputTextDangerClass =
     "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
   const errorMessage = "";
-  const baseURL = "http://localhost:3001/?eventType=";
+  const baseURL = "https://fpl-api-handler.herokuapp.com/?eventType=";
   async function fetchFPLDetails() {
     const requestURL = baseURL + "entry/" + fplId + "/";
     await fetch(requestURL)
