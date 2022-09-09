@@ -1,6 +1,6 @@
 # Getting Started with FPL Stats App
 
-Simple ReactJs App which lets you view your basic Fantasy Premier League Statistics by utilizing the APIs provided by official [Fantasy Premier League](https://www.postman.com/altimetry-operator-38323786/workspace/fantasy-premier-league/documentation/15391879-32b73369-4fc4-4e48-b566-acefc7125bed)
+Simple ReactJs App which lets you view your basic Fantasy Premier League Information by utilizing the APIs provided by official [Fantasy Premier League](https://www.postman.com/altimetry-operator-38323786/workspace/fantasy-premier-league/documentation/15391879-32b73369-4fc4-4e48-b566-acefc7125bed)
 
 ![FPL Stats Screenshot](https://github.com/AkashSinha96/fantasy-premier-league-stats/blob/master/Content/demo-screenshot.png)
 
