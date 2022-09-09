@@ -1,7 +1,7 @@
 # Getting Started with FPL Stats App
 
 Simple ReactJs App which lets you view your basic Fantasy Premier League Statistics
-
+[https://github.com/AkashSinha96/fantasy-premier-league-stats/blob/master/Content/demo-screenshot.png]
 
 ## Available Scripts
 
