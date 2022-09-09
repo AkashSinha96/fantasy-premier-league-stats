@@ -6,7 +6,7 @@ Simple ReactJs App which lets you view your basic Fantasy Premier League Statist
 
 ## How to use
 
-Login to your account on # [Fantasy Premier League](https://fantasy.premierleague.com/)  
+Login to your account on #[Fantasy Premier League](https://fantasy.premierleague.com/)  
 
 ### `npm start`
 
