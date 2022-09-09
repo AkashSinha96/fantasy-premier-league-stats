@@ -4,6 +4,16 @@ Simple ReactJs App which lets you view your basic Fantasy Premier League Informa
 
 ![FPL Stats Screenshot](https://github.com/AkashSinha96/fantasy-premier-league-stats/blob/master/Content/demo-screenshot.png)
 
+## Features
+
+Let's you view your
+
+1. Basic Information like Overall Rank, Points, Latest Gameweek Rank, etc.
+2. Rank over the seasons that you have played FPL.
+3. Rank in all the leagues that you are participating in.
+4. Rank changes over the Gameweeks in the current season.
+5. Supports dark mode and light mode switching when set system wide. 
+
 ## How to use the App
 
 Login to your account on [Fantasy Premier League](https://fantasy.premierleague.com/)  
@@ -22,5 +32,5 @@ $ npm start
 
 ## Technology Used
  1. ReactJS
- 2. Tailwind CSS components provided by Flowbite.
+ 2. Tailwind CSS components provided by [Flowbite](https://flowbite.com/).
  3. Deployed proxy server to handle CORS. [Repository Link](https://github.com/AkashSinha96/fantasy-premier-league-stats-api-handler) 
