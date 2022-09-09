@@ -33,4 +33,5 @@ $ npm start
 ## Technology Used
  1. ReactJS
  2. Tailwind CSS components provided by [Flowbite](https://flowbite.com/).
- 3. Deployed proxy server to handle CORS. [Repository Link](https://github.com/AkashSinha96/fantasy-premier-league-stats-api-handler) 
+ 3. Deployed proxy server to handle CORS. [Repository Link](https://github.com/AkashSinha96/fantasy-premier-league-stats-api-handler).
+ 4. Chart library provided by [Apex Charts](https://apexcharts.com/docs/react-charts/)
