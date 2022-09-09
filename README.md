@@ -15,4 +15,7 @@ Open the FPL Stats App, click on get started and enter the TeamId noted in the p
 ```sh
 $ npm install
 ```
-
+## 2. Start the project
+```sh
+$ npm start
+```
