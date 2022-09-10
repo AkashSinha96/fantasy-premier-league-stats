@@ -86,7 +86,7 @@ const EnterIdModal = (props) => {
         id="authentication-modal"
         tabIndex="-1"
         aria-hidden="true"
-        className=" fixed top-1/3 left-1/3 right-1/3 bottom-1/3 w-full  "
+        className=" fixed md:top-1/3 md:left-1/3 md:right-1/3 bottom-1/3 w-full  "
       >
         <div className="p-4 w-full max-w-md h-full md:h-auto">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-800">
