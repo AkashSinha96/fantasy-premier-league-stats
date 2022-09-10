@@ -37,7 +37,7 @@ const LandingPage = (props) => {
     if (fplPlayerDataMain.id !== undefined && fplPlayerDataMain.id !== 0) {
       props.onCloseLandingPage(fplPlayerDataMain);
     }
-  }, [fplPlayerDataMain]);
+  }, [fplPlayerDataMain, props]);
   return (
     <div>
       {isModalVisible && <EnterIdModal onClose={onCloseModal} />}
