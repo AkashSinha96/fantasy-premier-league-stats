@@ -61,7 +61,6 @@ const HistoryChart = (props) => {
       },
     ],
   });
-  AbortController
   function LoadPlayerData() {
     const baseURL = "https://fpl-api-handler.herokuapp.com/?eventType=";
     const requestURL = baseURL + "entry/" + props.id + "/history/";
