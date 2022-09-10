@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 const HistoryChart = (props) => {
-  const [playerId, setPlayerId] = useState(props.id);
+  const [playerId] = useState(props.id);
   const [currentFplData, setCurrentFplData] = useState();
   const [pastFplData, setPastFplData] = useState();
   const [chartVisible, setChartVisible] = useState(false);
@@ -61,10 +61,11 @@ const HistoryChart = (props) => {
       },
     ],
   });
+  AbortController
   function LoadPlayerData() {
     const baseURL = "https://fpl-api-handler.herokuapp.com/?eventType=";
     const requestURL = baseURL + "entry/" + props.id + "/history/";
-    fetch(requestURL)
+    fetch(requestURL, {timeout: 6000})
       .then((response) => {
         if (!response.ok) {
           throw new Error(response.status);
@@ -81,7 +82,7 @@ const HistoryChart = (props) => {
     if (playerId !== undefined && playerId !== 0) {
       LoadPlayerData();
     }
-  }, [playerId]);
+  }, [playerId], LoadPlayerData);
   useEffect(
     () => {
       if (currentFplData !== undefined && pastFplData !== undefined) {
@@ -170,9 +171,9 @@ const HistoryChart = (props) => {
         <Chart options={state.options} series={state.series} height="300" />
       )}
       {!chartVisible && (
-        <div role="status">
+        <div role="status" className="mt-2 flex justify-center items-center">
           <svg
-            className="inline mr-2 w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            className="inline mr-2 sm:w-10 sm:h-10 md:w-28 md:h-16  text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
