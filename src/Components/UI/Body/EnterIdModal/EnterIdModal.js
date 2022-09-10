@@ -4,6 +4,7 @@ const EnterIdModal = (props) => {
   const [fplId, SetFplId] = useState("");
   const [IsfplIdValid, SetfplIdValid] = useState(true);
   const [loadingIconVisible, setLoadingIconVisible] = useState(false);
+  const [responseCode, setResponseCode] = useState(0);
   const [fplPlayerData, SetFplData] = useState([
     {
       id: 0,
@@ -32,8 +33,14 @@ const EnterIdModal = (props) => {
     const requestURL = baseURL + "entry/" + fplId + "/";
     await fetch(requestURL)
       .then((response) => {
-        if (!response.ok) {
+        if (response.status === 503){
           SetfplIdValid(false);
+          setLoadingIconVisible(false);
+          setResponseCode(503);
+        }
+        else if (!response.ok) {
+          SetfplIdValid(false);
+          setLoadingIconVisible(false);
           throw new Error(response.status);
         } else {
           SetfplIdValid(true);
@@ -77,7 +84,7 @@ const EnterIdModal = (props) => {
         props.onClose(fplPlayerData, false);
       }
     },
-    [fplPlayerData],
+    [fplPlayerData, props],
     props
   );
   return (
@@ -130,12 +137,15 @@ const EnterIdModal = (props) => {
                       className={
                         IsfplIdValid ? inputTextClass : inputTextDangerClass
                       }
-                      placeholder="5284163"
+                      placeholder={IsfplIdValid ? "5284163" : ""}
                       required
                     />
                   )}
                   {loadingIconVisible && (
-                    <div role="status" className="mt-2 flex justify-center items-center">
+                    <div
+                      role="status"
+                      className="mt-2 flex justify-center items-center"
+                    >
                       <svg
                         className="inline mr-2 w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600 "
                         viewBox="0 0 100 101"
@@ -156,8 +166,8 @@ const EnterIdModal = (props) => {
                   )}
                   {!IsfplIdValid && (
                     <p class="mt-2 text-sm text-red-600 dark:text-red-500">
-                      <span class="font-medium">
-                        Please enter a valid FPL ID.
+                      <span className="font-medium">
+                        {responseCode !== 503 ? 'Please enter a valid FPL ID.' : 'Service is unavailable as game is being updated'}
                       </span>{" "}
                     </p>
                   )}

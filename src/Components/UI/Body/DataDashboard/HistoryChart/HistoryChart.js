@@ -61,27 +61,28 @@ const HistoryChart = (props) => {
       },
     ],
   });
-  function LoadPlayerData() {
-    const baseURL = "https://fpl-api-handler.herokuapp.com/?eventType=";
-    const requestURL = baseURL + "entry/" + props.id + "/history/";
-    fetch(requestURL, {timeout: 6000})
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.status);
-        } else {
-          return response.json();
-        }
-      })
-      .then((result) => {
-        setCurrentFplData(result.current);
-        setPastFplData(result.past);
-      });
-  }
+
   useEffect(() => {
+    const LoadPlayerData = () => {
+      const baseURL = "https://fpl-api-handler.herokuapp.com/?eventType=";
+      const requestURL = baseURL + "entry/" + props.id + "/history/";
+      fetch(requestURL, { timeout: 6000 })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.status);
+          } else {
+            return response.json();
+          }
+        })
+        .then((result) => {
+          setCurrentFplData(result.current);
+          setPastFplData(result.past);
+        });
+    };
     if (playerId !== undefined && playerId !== 0) {
       LoadPlayerData();
     }
-  }, [playerId], LoadPlayerData);
+  }, [playerId, props.id]);
   useEffect(
     () => {
       if (currentFplData !== undefined && pastFplData !== undefined) {
@@ -161,8 +162,7 @@ const HistoryChart = (props) => {
         }
       }
     },
-    [currentFplData],
-    [pastFplData]
+    [currentFplData, pastFplData, props.pastData],
   );
   return (
     <div>
