@@ -8,7 +8,7 @@ const DataDashboard = (props) => {
   const [chartVisible, setChartVisible] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
   const [userName, setUserName] = useState("");
-  const [playerLeagueInformation, setPlayerLeagueInformation] = useState(props.data.leagues.classic)
+  const [playerLeagueInformation] = useState(props.data.leagues.classic)
   useEffect(() => {
     if (basicFplData.id !== undefined && basicFplData.id !== 0) {
       setChartVisible(true);
